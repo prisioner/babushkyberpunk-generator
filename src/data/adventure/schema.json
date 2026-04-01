@@ -1,0 +1,31 @@
+{
+  "generatorId": "adventure",
+  "title": "Генератор приключения",
+  "hook": {
+    "tableId": "hook",
+    "rerollable": true
+  },
+  "sceneCount": 3,
+  "sceneBlueprint": {
+    "location": {
+      "tableId": "scene_location",
+      "rerollable": true
+    },
+    "technology": {
+      "tableId": "scene_technology",
+      "rerollable": true
+    },
+    "enemies": {
+      "appearanceTableId": "enemy_appearance",
+      "typeTableId": "enemy_type",
+      "rerollable": true
+    }
+  },
+  "tableTabs": [
+    "hook",
+    "scene_location",
+    "scene_technology",
+    "enemy_appearance",
+    "enemy_type"
+  ]
+}

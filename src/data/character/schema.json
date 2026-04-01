@@ -1,0 +1,80 @@
+{
+  "generatorId": "character",
+  "title": "Генератор бабушки",
+  "resultFields": [
+    {
+      "id": "full_name",
+      "title": "Как тебя кличут?",
+      "type": "computed",
+      "rerollable": true,
+      "computedFrom": ["first_name", "patronymic"],
+      "display": {
+        "style": "fullName"
+      }
+    },
+    {
+      "id": "portrait",
+      "title": "Портрет",
+      "type": "derived",
+      "rerollable": true,
+      "derivedFrom": ["hair_color"],
+      "display": {
+        "style": "portrait"
+      }
+    },
+    {
+      "id": "flaw",
+      "title": "Недостаток",
+      "type": "rolled",
+      "tableId": "flaw",
+      "rerollable": true
+    },
+    {
+      "id": "past",
+      "title": "Прошлое",
+      "type": "rolled",
+      "tableId": "past",
+      "rerollable": true
+    },
+    {
+      "id": "signature_move",
+      "title": "Коронный номер",
+      "type": "rolled",
+      "tableId": "signature_move",
+      "rerollable": true
+    },
+    {
+      "id": "veshch",
+      "title": "Вещчь",
+      "type": "rolled",
+      "tableId": "veshch",
+      "rerollable": true
+    },
+    {
+      "id": "stats",
+      "title": "Характеристики",
+      "type": "manual-distribution",
+      "rerollable": false,
+      "rules": {
+        "stats": [
+          "hardening",
+          "wits",
+          "computers",
+          "authority"
+        ],
+        "minPerStat": 0,
+        "maxPerStat": 3,
+        "totalPoints": 6
+      }
+    }
+  ],
+  "tableTabs": [
+    "hair_color",
+    "first_name",
+    "patronymic",
+    "flaw",
+    "past",
+    "signature_move",
+    "veshch"
+  ]
+}
