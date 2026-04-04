@@ -1,4 +1,5 @@
 export type RollType = 'd6' | 'd66' | 'd66-range';
+export type D6Value = 1 | 2 | 3 | 4 | 5 | 6;
 
 export type HighlightKind =
     | 'stat'
@@ -26,6 +27,10 @@ export interface KeyedEntry extends BaseEntry {
     key: string;
 }
 
+export interface HairColorEntry extends KeyedEntry {
+    color: string;
+}
+
 export interface RangedEntry extends BaseEntry {
     range: [number, number];
 }
@@ -43,6 +48,11 @@ export interface BaseTable {
 export interface D6Table extends BaseTable {
     roll: 'd6';
     entries: KeyedEntry[];
+}
+
+export interface HairColorTable extends D6Table {
+    id: 'hair_color';
+    entries: HairColorEntry[];
 }
 
 export interface D66Table extends BaseTable {
@@ -78,6 +88,67 @@ export interface SongsTableFile {
     title: string;
     roll: 'd6';
     entries: KeyedEntry[];
+}
+
+export interface D6RollResult {
+    value: D6Value;
+    key: string;
+}
+
+export interface D66RollResult {
+    firstDie: D6Value;
+    secondDie: D6Value;
+    key: string;
+}
+
+export interface RolledD6TableResult<TEntry extends KeyedEntry = KeyedEntry> {
+    roll: D6RollResult;
+    entry: TEntry;
+}
+
+export interface RolledD66TableResult<TEntry extends KeyedEntry = KeyedEntry> {
+    roll: D66RollResult;
+    entry: TEntry;
+}
+
+export interface RolledD66RangeTableResult<TEntry extends RangedEntry = RangedEntry> {
+    roll: D66RollResult;
+    entry: TEntry;
+}
+
+export interface GeneratedCharacterName {
+    fullName: string;
+    firstName: RolledD6TableResult;
+    patronymic: RolledD6TableResult;
+}
+
+export type GeneratedCharacterStats = Record<StatId, number>;
+
+export interface GeneratedCharacter {
+    hairColor: RolledD6TableResult;
+    name: GeneratedCharacterName;
+    flaw: RolledD6TableResult;
+    past: RolledD66RangeTableResult;
+    signatureMove: RolledD66RangeTableResult;
+    veshch: RolledD66RangeTableResult;
+    stats: GeneratedCharacterStats;
+}
+
+export interface GeneratedEnemies {
+    appearance: RolledD6TableResult;
+    type: RolledD6TableResult<SubtableLinkedEntry>;
+    subtype: RolledD6TableResult;
+}
+
+export interface GeneratedScene {
+    location: RolledD66TableResult;
+    technology: RolledD66TableResult;
+    enemies: GeneratedEnemies;
+}
+
+export interface GeneratedAdventure {
+    hook: RolledD66TableResult;
+    scenes: GeneratedScene[];
 }
 
 export type CharacterFieldType =
@@ -128,7 +199,7 @@ export interface ManualDistributionCharacterField {
     id: string;
     title: string;
     type: 'manual-distribution';
-    rerollable: false;
+    rerollable: boolean;
     rules: ManualDistributionRules;
     display?: DisplayConfig;
 }

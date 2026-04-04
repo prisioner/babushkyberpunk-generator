@@ -54,7 +54,7 @@
       "id": "stats",
       "title": "Характеристики",
       "type": "manual-distribution",
-      "rerollable": false,
+      "rerollable": true,
       "rules": {
         "stats": [
           "hardening",

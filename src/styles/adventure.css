@@ -1,0 +1,537 @@
+.adventure-generator {
+  display: grid;
+  gap: 16px;
+}
+
+.adventure-sheet-panel {
+  display: grid;
+  gap: 16px;
+}
+
+.adventure-sheet-title {
+  margin: 0;
+  text-align: center;
+}
+
+.adventure-sheet-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0;
+}
+
+.adventure-sheet-layout {
+  display: grid;
+  gap: 16px;
+}
+
+.adventure-sheet-block,
+.adventure-scene-card {
+  padding: 12px;
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-primary);
+}
+
+.adventure-sheet-block {
+  display: grid;
+  gap: 12px;
+}
+
+.adventure-sheet-block-header,
+.adventure-scene-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.adventure-sheet-block-header.is-centered,
+.adventure-scene-header--centered {
+  align-items: center;
+}
+
+.adventure-sheet-block-title,
+.adventure-scene-title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.adventure-sheet-block-header.is-centered .adventure-sheet-block-title,
+.adventure-scene-header--centered .adventure-scene-title {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.adventure-sheet-block-body {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  min-height: 4.5rem;
+}
+
+.adventure-sheet-block-body--hook {
+  min-height: 6.5rem;
+}
+
+.adventure-sheet-block-body--enemies {
+  min-height: 10rem;
+}
+
+.adventure-sheet-block-body.is-empty {
+  min-height: inherit;
+}
+
+.adventure-sheet-action-slot {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex: 0 0 auto;
+}
+
+.adventure-sheet-placeholder {
+  min-height: 100%;
+  border: 1px dashed var(--color-border-secondary);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--color-bg-base) 82%, white 18%);
+}
+
+.adventure-sheet-placeholder--tall {
+  min-height: 10rem;
+}
+
+.adventure-sheet-value,
+.adventure-sheet-description,
+.adventure-sheet-roll {
+  margin: 0;
+}
+
+.adventure-sheet-result {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.adventure-sheet-result--hook {
+  width: 60%;
+  justify-self: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.adventure-sheet-hook-dice {
+  margin: 0;
+}
+
+.adventure-sheet-inline-result {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+
+.adventure-sheet-roll,
+.adventure-sheet-description {
+  color: var(--color-text-secondary);
+}
+
+.adventure-sheet-enemies {
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+}
+
+.adventure-sheet-enemy-line {
+  display: grid;
+  gap: 6px;
+  justify-items: start;
+}
+
+.adventure-sheet-enemy-label {
+  color: var(--color-text-secondary);
+}
+
+.adventure-scenes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.adventure-scene-card {
+  display: grid;
+  gap: 12px;
+  min-height: 100%;
+}
+
+.adventure-scene-sections {
+  display: grid;
+  gap: 12px;
+}
+
+.adventure-suseki-grouped-list {
+  display: grid;
+  gap: 12px;
+}
+
+.adventure-suseki-grouped-list--hook,
+.adventure-suseki-grouped-list--scene {
+  width: min(100%, 36rem);
+  margin-inline: auto;
+}
+
+.adventure-suseki-group {
+  display: grid;
+  gap: 12px;
+}
+
+.adventure-suseki-grouped-list--scene .adventure-suseki-group-card {
+  border-left: 0;
+  border-right: 0;
+}
+
+.adventure-suseki-group-card {
+  padding: 12px;
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-primary);
+  display: grid;
+  gap: 10px;
+}
+
+.adventure-suseki-group-row + .adventure-suseki-group-row {
+  padding-top: 10px;
+  border-top: 1px solid var(--color-border-secondary);
+}
+
+.adventure-suseki-table-line {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.adventure-suseki-table-line-key {
+  display: flex;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.adventure-suseki-table-line-label {
+  min-width: 0;
+  text-align: left;
+}
+
+.adventure-suseki-hook-entry {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  text-align: center;
+}
+
+.adventure-suseki-hook-key,
+.adventure-suseki-hook-label {
+  min-width: 0;
+}
+
+.adventure-suseki-panel {
+  display: grid;
+  gap: 16px;
+}
+
+.adventure-suseki-top {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: grid;
+  gap: 12px;
+  background: var(--color-bg-layout);
+  padding-bottom: 16px;
+  border-bottom: 4px solid var(--color-border-primary);
+}
+
+.adventure-suseki-roll-panel,
+.adventure-suseki-table-panel {
+  min-width: 0;
+}
+
+.adventure-suseki-roll-content {
+  width: min(100%, 36rem);
+  margin-inline: auto;
+}
+
+.adventure-suseki-roll-panel .suseki-roll-toolbar {
+  justify-content: flex-end;
+}
+
+.adventure-suseki-roll-panel .suseki-roll-card {
+  border: 0;
+  border-top: 4px solid var(--color-border-primary);
+  border-radius: 0;
+  box-shadow: none;
+  text-align: center;
+}
+
+.adventure-suseki-roll-panel .suseki-roll-card-header {
+  justify-content: center;
+}
+
+.adventure-suseki-roll-panel .suseki-roll-result {
+  justify-items: center;
+}
+
+.adventure-suseki-roll-panel .suseki-roll-empty,
+.adventure-suseki-roll-panel .suseki-result-description {
+  text-align: center;
+}
+
+.adventure-suseki-roll-panel
+  .suseki-result-line:not(.adventure-suseki-enemy-line):not(.adventure-suseki-axis-line) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.35em;
+  flex-wrap: wrap;
+}
+
+.adventure-suseki-roll-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.adventure-suseki-roll-tab {
+  padding: 8px 12px;
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-base);
+  box-shadow: var(--shadow-primary);
+  cursor: pointer;
+}
+
+.adventure-suseki-roll-tab.is-active {
+  border-color: var(--color-border-primary);
+  background: var(--color-primary);
+}
+
+.adventure-suseki-roll-tab:hover {
+  background: var(--color-bg-elevated);
+}
+
+.adventure-suseki-roll-tab.is-active:hover {
+  background: var(--color-primary-hover);
+}
+
+.adventure-suseki-roll-tab:active {
+  background: var(--color-primary-active);
+  box-shadow: none;
+  transform: translate(2px, 2px);
+}
+
+.adventure-suseki-roll-panel .adventure-suseki-enemy-line {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  justify-self: stretch;
+}
+
+.adventure-suseki-roll-panel .adventure-suseki-enemy-line-label {
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+  min-width: 0;
+}
+
+.adventure-suseki-roll-panel .adventure-suseki-enemy-line-result {
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  min-width: 0;
+}
+
+.adventure-suseki-roll-panel .adventure-suseki-axis-line {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  justify-self: stretch;
+}
+
+.adventure-suseki-axis-key {
+  display: flex;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.adventure-suseki-axis-label {
+  min-width: 0;
+  text-align: left;
+}
+
+.adventure-enemy-matrix-wrapper {
+  min-width: 0;
+}
+
+.adventure-enemy-matrix-mobile {
+  display: none;
+}
+
+.adventure-enemy-matrix {
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-base);
+  box-shadow: var(--shadow-primary);
+}
+
+.adventure-enemy-matrix-head,
+.adventure-enemy-matrix-row {
+  display: grid;
+  grid-template-columns: minmax(12.25rem, 13.5rem) minmax(10.5rem, 11.5rem) minmax(0, 1fr);
+  background: var(--color-bg-base);
+}
+
+.adventure-enemy-matrix-head {
+  font-weight: 600;
+  border-bottom: 2px solid var(--color-border-secondary);
+}
+
+.adventure-enemy-matrix-heading,
+.adventure-enemy-matrix-col {
+  padding: 12px;
+  min-width: 0;
+}
+
+.adventure-enemy-matrix-heading--appearance {
+  white-space: nowrap;
+}
+
+.adventure-enemy-matrix-heading--appearance,
+.adventure-enemy-matrix-col--appearance {
+  border-right: 4px solid var(--color-border-primary);
+}
+
+.adventure-enemy-matrix-heading--type,
+.adventure-enemy-matrix-col--type {
+  border-right: 2px solid var(--color-border-secondary);
+}
+
+.adventure-enemy-matrix-col--appearance,
+.adventure-enemy-matrix-col--type {
+  display: flex;
+  align-items: center;
+}
+
+.adventure-enemy-matrix-row + .adventure-enemy-matrix-row .adventure-enemy-matrix-col--appearance {
+  border-top: 1px solid var(--color-border-secondary);
+}
+
+.adventure-enemy-matrix-row + .adventure-enemy-matrix-row .adventure-enemy-matrix-col--type,
+.adventure-enemy-matrix-row + .adventure-enemy-matrix-row .adventure-enemy-matrix-col--subtypes {
+  border-top: 4px solid var(--color-border-primary);
+}
+
+.adventure-enemy-subtype-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, auto);
+  grid-auto-flow: column;
+  gap: 8px 12px;
+  align-content: start;
+}
+
+.adventure-enemy-subtype-item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.adventure-enemy-subtype-dice {
+  font-size: 1.1em;
+}
+
+.adventure-enemy-mobile-section {
+  display: grid;
+  gap: 12px;
+}
+
+.adventure-enemy-mobile-title,
+.adventure-enemy-mobile-subtitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.adventure-enemy-mobile-list,
+.adventure-enemy-mobile-cards {
+  display: grid;
+  gap: 12px;
+}
+
+.adventure-enemy-mobile-appearance-card,
+.adventure-enemy-mobile-card {
+  padding: 12px;
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-primary);
+}
+
+.adventure-enemy-mobile-list {
+  gap: 0;
+}
+
+.adventure-enemy-mobile-list-item,
+.adventure-enemy-mobile-card-header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.adventure-enemy-mobile-list-item + .adventure-enemy-mobile-list-item {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--color-border-secondary);
+}
+
+.adventure-enemy-mobile-subtitle {
+  margin-top: 12px;
+  margin-bottom: 10px;
+}
+
+.adventure-enemy-mobile-dice {
+  font-size: 1em;
+}
+
+@media (max-width: 900px) {
+  .adventure-enemy-matrix-desktop {
+    display: none;
+  }
+
+  .adventure-enemy-matrix-mobile {
+    display: grid;
+    gap: 16px;
+  }
+
+  .adventure-enemy-subtype-grid--mobile {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .adventure-enemy-subtype-grid--mobile {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-auto-flow: row;
+  }
+}
