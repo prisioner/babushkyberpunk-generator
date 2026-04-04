@@ -19,6 +19,7 @@ import type {
 
 type RandomSource = () => number
 export type CharacterRerollTarget =
+  | 'hair_color'
   | 'full_name'
   | 'flaw'
   | 'past'
@@ -249,6 +250,21 @@ export function rerollCharacterField(
   randomSource: RandomSource = Math.random,
 ): GeneratedCharacter {
   switch (target) {
+    case 'hair_color': {
+      const portraitField = getDerivedField('portrait')
+
+      if (portraitField.derivedFrom.length !== 1) {
+        throw new Error('Portrait field must depend on exactly one source field.')
+      }
+
+      return {
+        ...character,
+        hairColor: rollOnD6Table(
+          getD6CharacterTable(portraitField.derivedFrom[0]),
+          randomSource,
+        ),
+      }
+    }
     case 'full_name': {
       const fullNameField = getComputedField('full_name')
 

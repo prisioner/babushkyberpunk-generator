@@ -169,6 +169,12 @@
   margin-left: auto;
 }
 
+.character-sheet-stats-wrapper {
+  position: relative;
+  min-height: 0;
+  height: 100%;
+}
+
 .character-sheet-photo img {
   width: 100%;
   height: 100%;
@@ -187,7 +193,8 @@
   display: grid;
   gap: 0;
   height: 100%;
-  padding-right: 10px;
+  padding-top: 0.2rem;
+  padding-right: 1.95rem;
   align-content: space-between;
 }
 
@@ -257,19 +264,56 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  gap: 12px;
+  gap: 8px;
+}
+
+.character-sheet-field-title-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+  flex: 0 0 auto;
 }
 
 .character-sheet-field-title {
   font-weight: 700;
   font-size: 1.22em;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .character-sheet-field-hint {
   color: var(--color-text-secondary);
   font-size: 0.8em;
   text-align: right;
+  white-space: nowrap;
+}
+
+.character-sheet-reroll {
+  flex: 0 0 auto;
+  width: 1.05rem;
+  height: 1.05rem;
+  font-size: 0.68rem;
+  box-shadow: none;
+}
+
+.character-sheet-reroll:hover {
+  box-shadow: none;
+}
+
+.character-sheet-reroll:active {
+  transform: translate(1px, 1px);
+}
+
+.character-sheet-reroll--inline {
+  margin-bottom: 0.02rem;
+}
+
+.character-sheet-reroll--overlay {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  z-index: 1;
 }
 
 .character-sheet-display-field {

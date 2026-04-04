@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { RerollButton } from '../../../components/RerollButton'
 import characterSchemaJson from '../../../data/character/schema.json'
 import type {
   CharacterSchemaFile,
@@ -120,6 +121,8 @@ interface CharacterSheetDisplayFieldProps {
   value?: ReactNode
   hint?: string
   multiline?: boolean
+  rerollLabel?: string
+  onReroll?: () => void
 }
 
 function CharacterSheetDisplayField({
@@ -127,11 +130,22 @@ function CharacterSheetDisplayField({
   value,
   hint,
   multiline = false,
+  rerollLabel,
+  onReroll,
 }: CharacterSheetDisplayFieldProps) {
   return (
     <div className="character-sheet-field">
       <div className="character-sheet-field-header">
-        <strong className="character-sheet-field-title">{title}</strong>
+        <span className="character-sheet-field-title-row">
+          <strong className="character-sheet-field-title">{title}</strong>
+          {onReroll ? (
+            <RerollButton
+              className="character-sheet-reroll character-sheet-reroll--inline"
+              label={rerollLabel}
+              onClick={onReroll}
+            />
+          ) : null}
+        </span>
         {hint ? <span className="character-sheet-field-hint">{hint}</span> : null}
       </div>
 
@@ -228,12 +242,26 @@ interface CharacterSheetProps {
   character: GeneratedCharacter | null
   draft: CharacterSheetDraft
   onWoundChange: (woundId: CharacterSheetWoundId, checked: boolean) => void
+  onRerollHairColor?: () => void
+  onRerollStats?: () => void
+  onRerollFullName?: () => void
+  onRerollPast?: () => void
+  onRerollSignatureMove?: () => void
+  onRerollVeshch?: () => void
+  onRerollFlaw?: () => void
 }
 
 export function CharacterSheet({
   character,
   draft,
   onWoundChange,
+  onRerollHairColor,
+  onRerollStats,
+  onRerollFullName,
+  onRerollPast,
+  onRerollSignatureMove,
+  onRerollVeshch,
+  onRerollFlaw,
 }: CharacterSheetProps) {
   return (
     <div className="character-sheet-shell">
@@ -262,6 +290,14 @@ export function CharacterSheet({
 
               <div className="character-sheet-left-content">
                 <div className="character-sheet-photo">
+                  {onRerollHairColor ? (
+                    <RerollButton
+                      className="character-sheet-reroll character-sheet-reroll--overlay"
+                      label="Перегенерировать цвет волос"
+                      onClick={onRerollHairColor}
+                    />
+                  ) : null}
+
                   {character ? (
                     <img
                       src={getHairColorImagePath(character.hairColor.roll.value)}
@@ -274,14 +310,24 @@ export function CharacterSheet({
                   ) : null}
                 </div>
 
-                <div className="character-sheet-stats">
-                  {statOrder.map((statId) => (
-                    <CharacterStatField
-                      key={statId}
-                      statId={statId}
-                      value={character ? String(character.stats[statId]) : ''}
+                <div className="character-sheet-stats-wrapper">
+                  {onRerollStats ? (
+                    <RerollButton
+                      className="character-sheet-reroll character-sheet-reroll--overlay"
+                      label="Перегенерировать характеристики"
+                      onClick={onRerollStats}
                     />
-                  ))}
+                  ) : null}
+
+                  <div className="character-sheet-stats">
+                    {statOrder.map((statId) => (
+                      <CharacterStatField
+                        key={statId}
+                        statId={statId}
+                        value={character ? String(character.stats[statId]) : ''}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -293,53 +339,53 @@ export function CharacterSheet({
                 <CharacterSheetDisplayField
                   title="Как тебя кличут?"
                   value={character?.name.fullName}
+                  rerollLabel="Перегенерировать имя и отчество"
+                  onReroll={onRerollFullName}
                 />
 
                 <CharacterSheetDisplayField
                   title="Прошлое"
                   hint="Используй один раз за историю."
-                    value={
-                      character ? (
-                        <CharacterEntryText entry={character.past.entry} />
-                      ) : undefined
-                    }
-                    multiline
+                  value={character ? <CharacterEntryText entry={character.past.entry} /> : undefined}
+                  multiline
+                  rerollLabel="Перегенерировать прошлое"
+                  onReroll={onRerollPast}
                 />
 
                 <CharacterSheetDisplayField
                   title="Коронный номер"
                   hint="Потрать 1 пункт НЗ, чтобы исполнить."
-                    value={
-                      character ? (
-                        <CharacterEntryText entry={character.signatureMove.entry} />
-                      ) : undefined
-                    }
-                    multiline
+                  value={
+                    character ? <CharacterEntryText entry={character.signatureMove.entry} /> : undefined
+                  }
+                  multiline
+                  rerollLabel="Перегенерировать коронный номер"
+                  onReroll={onRerollSignatureMove}
                 />
 
                 <CharacterSheetDisplayField
                   title="Вещчь"
-                    value={
-                      character ? (
-                        <CharacterEntryText entry={character.veshch.entry} />
-                      ) : undefined
-                    }
-                    multiline
+                  value={character ? <CharacterEntryText entry={character.veshch.entry} /> : undefined}
+                  multiline
+                  rerollLabel="Перегенерировать вещчь"
+                  onReroll={onRerollVeshch}
                 />
 
                 <CharacterSheetDisplayField
                   title="Прочее"
-                      value={
-                        character ? (
-                        <div className="character-sheet-entry-stack">
-                          <CharacterEntryText entry={character.flaw.entry} />
-                          <div className="character-sheet-entry-line">
-                            <strong>Цвет волос:</strong> <span>{character.hairColor.entry.label}</span>
-                          </div>
+                  value={
+                    character ? (
+                      <div className="character-sheet-entry-stack">
+                        <CharacterEntryText entry={character.flaw.entry} />
+                        <div className="character-sheet-entry-line">
+                          <strong>Цвет волос:</strong> <span>{character.hairColor.entry.label}</span>
                         </div>
+                      </div>
                     ) : undefined
                   }
                   multiline
+                  rerollLabel="Перегенерировать недостаток"
+                  onReroll={onRerollFlaw}
                 />
               </div>
 

@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from 'react'
 import { CharacterTablesPanel } from './CharacterTablesPanel'
-import { generateCharacter } from '../../lib/character'
+import { generateCharacter, rerollCharacterField, type CharacterRerollTarget } from '../../lib/character'
 import type {
   CharacterSusekiRollState,
   CharacterSusekiTabId,
@@ -45,6 +45,12 @@ export function CharacterGenerator({
     onSheetDraftChange(createCharacterSheetDraft())
   }
 
+  function handleRerollCharacterField(target: CharacterRerollTarget) {
+    onCharacterChange((currentCharacter) =>
+      currentCharacter ? rerollCharacterField(currentCharacter, target) : currentCharacter,
+    )
+  }
+
   function handleWoundChange(woundId: CharacterSheetWoundId, checked: boolean) {
     onSheetDraftChange((currentDraft) => ({
       ...currentDraft,
@@ -71,6 +77,19 @@ export function CharacterGenerator({
           character={character}
           draft={sheetDraft}
           onWoundChange={handleWoundChange}
+          onRerollHairColor={
+            character ? () => handleRerollCharacterField('hair_color') : undefined
+          }
+          onRerollStats={character ? () => handleRerollCharacterField('stats') : undefined}
+          onRerollFullName={
+            character ? () => handleRerollCharacterField('full_name') : undefined
+          }
+          onRerollPast={character ? () => handleRerollCharacterField('past') : undefined}
+          onRerollSignatureMove={
+            character ? () => handleRerollCharacterField('signature_move') : undefined
+          }
+          onRerollVeshch={character ? () => handleRerollCharacterField('veshch') : undefined}
+          onRerollFlaw={character ? () => handleRerollCharacterField('flaw') : undefined}
         />
       </div>
 
