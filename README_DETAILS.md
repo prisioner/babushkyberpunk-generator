@@ -8,7 +8,7 @@
 - 🎶 частушки (d6 на любой случай жизни)
 
 👉 Открыть генератор:  
-https://prisioner.github.io/babushkiberpunk-generator
+https://prisioner.github.io/babushkyberpunk-generator
 
 ---
 

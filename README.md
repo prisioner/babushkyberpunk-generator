@@ -10,7 +10,7 @@
 - 🎶 частушку (на всякий случай жизни)
 
 👉 Вот тут всё работает, жми да крути:  
-https://prisioner.github.io/babushkiberpunk-generator
+https://prisioner.github.io/babushkyberpunk-generator
 
 ---
 

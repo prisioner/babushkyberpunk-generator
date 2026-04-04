@@ -66,7 +66,7 @@ export default function App() {
             <div className="app-links" aria-label="Внешние ссылки">
               <a
                 className="app-link app-link--icon"
-                href="https://github.com/prisioner/babushkiberpunk-generator"
+                href="https://github.com/prisioner/babushkyberpunk-generator"
                 target="_blank"
                 rel="noopener"
                 aria-label="GitHub репозиторий"
