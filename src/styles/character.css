@@ -263,7 +263,7 @@
 .character-sheet-field-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 8px;
 }
 
@@ -286,7 +286,7 @@
   color: var(--color-text-secondary);
   font-size: 0.8em;
   text-align: right;
-  white-space: nowrap;
+  white-space: pre-line;
 }
 
 .character-sheet-reroll {

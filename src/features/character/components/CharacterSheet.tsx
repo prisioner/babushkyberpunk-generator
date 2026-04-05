@@ -345,7 +345,8 @@ export function CharacterSheet({
 
                 <CharacterSheetDisplayField
                   title="Прошлое"
-                  hint="Используй один раз за историю."
+                  hint={`Используй один раз
+за историю.`}
                   value={character ? <CharacterEntryText entry={character.past.entry} /> : undefined}
                   multiline
                   rerollLabel="Перегенерировать прошлое"
@@ -354,7 +355,8 @@ export function CharacterSheet({
 
                 <CharacterSheetDisplayField
                   title="Коронный номер"
-                  hint="Потрать 1 пункт НЗ, чтобы исполнить."
+                  hint={`Потрать 1 пункт НЗ,
+чтобы исполнить.`}
                   value={
                     character ? <CharacterEntryText entry={character.signatureMove.entry} /> : undefined
                   }
